@@ -341,7 +341,7 @@ class NotiFreeze(hass.Hass):  # type: ignore
                     message = await self.create_message(room, entity_id, indoor, initial)
 
                     # send notification
-                    await self.call_service(self.notify_service, message=re.sub(r"\033\[\dm", "", message))
+                    await self.call_service(self.notify_service, google="true", message=re.sub(r"\033\[\dm", "", message))
 
                     # schedule next reminder
                     room.handles[entity_id] = await self.run_in(
